@@ -66,31 +66,31 @@ export default function PipesTable({ data, onSetData, onEditPipe, onAddPipe, onD
   }
 
   const columns = [
-    { title: 'name', dataIndex: 'name', width: '8%', editable: true },
-    { title: 'type', dataIndex: 'type', width: '5%', editable: false },
-    { title: 'len [mm]', dataIndex: 'length', width: '1%', editable: true },
-    { title: 'ang [°]', dataIndex: 'angle', width: '1%', editable: true },
-    { title: 'rad [mm]', dataIndex: 'radius', width: '1%', editable: true },
-    { title: 'rot [°]', dataIndex: 'rotation', width: '1%', editable: true },
+    { title: 'Name', dataIndex: 'name', width: '8%', editable: true },
+    { title: 'Type', dataIndex: 'type', width: '5%', editable: false },
+    { title: 'Length [mm]', dataIndex: 'length', width: '1%', editable: true },
+    { title: 'Angle [°]', dataIndex: 'angle', width: '1%', editable: true },
+    { title: 'Radius [mm]', dataIndex: 'radius', width: '1%', editable: true },
+    { title: 'Rotation [°]', dataIndex: 'rotation', width: '1%', editable: true },
     {
-      title: 'operation',
+      title: 'Operations',
       dataIndex: 'operation',
       width: '200px',
       render: (_, record) => {
         const isLast = isLastItem(record)
         return (
-          <span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {isLast && (
-              <Typography.Link disabled={editingKey !== ''} onClick={() => addItem()} style={{ marginRight: 8 }}>
-                Add
+              <Typography.Link disabled={editingKey !== ''} onClick={() => addItem()}>
+                ➕ Add
               </Typography.Link>
             )}
             {isLast && data.length > 1 && (
-              <Typography.Link disabled={editingKey !== ''} onClick={() => deleteItem()}>
-                Delete
+              <Typography.Link disabled={editingKey !== ''} onClick={() => deleteItem()} style={{ color: '#ff4d4f' }}>
+                🗑️ Delete
               </Typography.Link>
             )}
-          </span>
+          </div>
         )
       },
     },
@@ -159,10 +159,10 @@ export default function PipesTable({ data, onSetData, onEditPipe, onAddPipe, onD
       </Form>
       <div style={{ marginTop: 16, display: 'flex', gap: 8 }}>
         <Button type="primary" onClick={onSaveOfb}>
-          Save as OFB
+          💾 Save as OFB
         </Button>
         <Button type="primary" onClick={onSaveStp}>
-          Save as STP
+          💾 Save as STP
         </Button>
       </div>
     </div>

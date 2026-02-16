@@ -67,7 +67,7 @@ function Tab({ id }) {
   }, [pipes])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height: '100%', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100%', gap: 20, paddingLeft: 20 }}>
       <PipesTable 
         data={data} 
         onSetData={setData} 
