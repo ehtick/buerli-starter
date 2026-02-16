@@ -14,7 +14,7 @@ export default function App() {
   const [activeKey, setActiveKey] = useState()
   const [items, setItems] = useState([
     {
-      label: 'New session',
+      label: 'Session 1',
       children: (
         <Suspense fallback={null}>
           <Tab id="newTabDefault" />
@@ -23,12 +23,12 @@ export default function App() {
       key: 'newTabDefault',
     },
   ])
-  const newTabIndex = useRef(0)
+  const newTabIndex = useRef(1)
   const onChange = newActiveKey => setActiveKey(newActiveKey)
   const onEdit = (targetKey, action) => (action === 'add' ? add() : remove(targetKey))
   const add = () => {
     const key = `newTab${newTabIndex.current++}`
-    setItems([ ...items, { label: 'New session', children: <Suspense fallback={null}><Tab id={key} /></Suspense>, key }]) // prettier-ignore
+    setItems([ ...items, { label: `Session ${newTabIndex.current}`, children: <Suspense fallback={null}><Tab id={key} /></Suspense>, key }]) // prettier-ignore
     setActiveKey(key)
   }
   const remove = targetKey => {
