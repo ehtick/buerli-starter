@@ -54,6 +54,11 @@ export class Pipes {
       const constr = await this.api.assembly.getFastened({ id: this.rootAsm, name: item.name + 'FC' })
       await this.api.assembly.updateFastened({ ...constr, zRotation: (item.rotation / 180) * Math.PI })
     }
+    // Update the stored item data to keep it synchronized
+    const index = this.itemsData.findIndex(i => i.name === item.name)
+    if (index !== -1) {
+      this.itemsData[index] = item
+    }
   }
 
   /** Add new pipe at the end of the exisiting pipe */
